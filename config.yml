@@ -1,0 +1,9 @@
+redis:
+  uri: "localhost:6379"
+postgres: # PostgreSQL servisi
+  environment:
+    POSTGRES_USER: postgres
+    POSTGRES_PASSWORD: mysecretpassword
+    POSTGRES_DB: messaging
+  host: "localhost"
+  port: 5432

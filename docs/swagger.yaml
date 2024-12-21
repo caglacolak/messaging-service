@@ -1,0 +1,75 @@
+definitions:
+  models.Message:
+    properties:
+      content:
+        example: Hello, world!
+        type: string
+      id:
+        example: 1
+        type: integer
+      recipient:
+        example: "+905383311137"
+        type: string
+      sent_at:
+        type: string
+      status:
+        example: sent
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact:
+    email: caglaccolak@gmail.com
+    name: Çağla Çolak
+  description: API documentation for the messaging service
+  title: Messaging API
+  version: "1.0"
+paths:
+  /sent-messages:
+    get:
+      consumes:
+      - application/json
+      description: Returns a list of all messages that have been sent.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Message'
+        "500":
+          description: Internal Server Error
+      summary: Retrieve sent messages
+      tags:
+      - Messaging
+  /start-messages:
+    post:
+      consumes:
+      - application/json
+      description: Starts the scheduler that sends unsent messages every 2 minutes.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+        "500":
+          description: Internal Server Error
+      summary: Start the scheduler
+      tags:
+      - Scheduler
+  /stop-messages:
+    post:
+      consumes:
+      - application/json
+      description: Stops the currently running scheduler for sending messages.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+        "500":
+          description: Internal Server Error
+      summary: Stop the scheduler
+      tags:
+      - Scheduler
+swagger: "2.0"
