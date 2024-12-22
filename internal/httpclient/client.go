@@ -42,7 +42,7 @@ func PostMessage(ctx context.Context, to, content string) (*PostMessageResponse,
 	}
 	defer resp.Body.Close()
 
-	if resp.StatusCode != http.StatusOK {
+	if resp.StatusCode != http.StatusAccepted {
 		return nil, errors.New("failed to send message")
 	}
 

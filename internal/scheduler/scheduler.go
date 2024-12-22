@@ -34,7 +34,8 @@ func SendMessages(ctx context.Context) {
 		messaging.MarkMessageAsSent(ctx, message.ID)
 
 		cacheKey := fmt.Sprintf("message:%d", message.ID)
-		redis.Redis.Set(ctx, cacheKey, time.Now().String(), 0)
+		value := fmt.Sprintf("message ID:%s , time:%s", resp.MessageID, time.Now().String())
+		redis.Redis.Set(ctx, cacheKey, value, 0)
 	}
 }
 
